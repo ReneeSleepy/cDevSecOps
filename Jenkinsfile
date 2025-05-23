@@ -1,31 +1,42 @@
 pipeline {
     agent any
+
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', 
-                url: 'https://github.com/ReneeSleepy/cDevSecOps.git'
+                git branch: 'main', url: 'https://github.com/your_github_username/8.2CDevSecOps.git'
             }
         }
+
         stage('Install Dependencies') {
             steps {
-                sh 'npm install'
+                bat 'npm install'
             }
         }
+
         stage('Run Tests') {
             steps {
-                sh 'npm test || true' // Continue even if tests fail
+                bat 'npm test || exit /b 0' 
             }
         }
-        stage('Security Scan') {
+
+        stage('Generate Coverage Report') {
             steps {
-                sh 'npm audit || true' // Output vulnerability report
+                bat 'npm run coverage || exit /b 0' 
+            }
+        }
+
+        stage('NPM Audit (Security Scan)') {
+            steps {
+                bat 'npm audit || exit /b 0'  
             }
         }
     }
+
     post {
         always {
             archiveArtifacts artifacts: '**/npm-audit.json', allowEmptyArchive: true
         }
     }
 }
+
