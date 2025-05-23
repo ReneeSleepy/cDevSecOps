@@ -4,7 +4,7 @@ pipeline {
         // Stage 1: Build
         stage('Build') {
             steps {
-                echo "Compiling and packaging code using Maven"
+                echo "Compiling and packaging code using Maven！"
                 // sh 'mvn clean package'
             }
         }
