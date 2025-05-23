@@ -1,9 +1,14 @@
 pipeline {
     agent any
     stages {
-        stage('Demo') {
+        stage('Checkout') {
             steps {
-                echo 'Hello, Jenkins!'
+                git branch: 'main', url: 'https://github.com/你的GitHub用户名/8.2CDevSecOps.git'
+            }
+        }
+        stage('示范') {
+            steps {
+                echo 'Pipeline running...'
             }
         }
     }
