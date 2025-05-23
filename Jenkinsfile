@@ -6,7 +6,7 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/你的GitHub用户名/8.2CDevSecOps.git'
             }
         }
-        stage('示范') {
+        stage('sample') {
             steps {
                 echo 'Pipeline running...'
             }
