@@ -4,7 +4,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 git branch: 'main', 
-                url: 'https://github.com/your-github-account/8.2CDevSecOps.git'
+                url: 'https://github.com/ReneeSleepy/cDevSecOps.git'
             }
         }
         stage('Install Dependencies') {
